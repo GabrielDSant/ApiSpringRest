@@ -3,10 +3,11 @@ package com.crud.api.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import com.crud.api.repository.productRepository;
+import com.crud.api.model.product;
+
+import java.util.List;
 
 //Serve para indicar que nossa classe é um controller
 @RestController
@@ -24,8 +25,29 @@ public class productController {
     @GetMapping
     // No java precisamos dizer o que volta da "classe" no caso 'void' é vazio.
     // Aqui voltamos o ResponseEntity que é uma classe responsavel pela montagem do response;
-    public ResponseEntity getAllProduct(){
+    public ResponseEntity<List<product>> getAllProduct(){
         // .ok == "status 200"
-        return ResponseEntity.ok("deu Ok!");
+        List<product> product = ProductRepository.findAll();
+        if (!product.isEmpty()) {
+            return new ResponseEntity<>(product, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @PostMapping
+    public ResponseEntity<product> createUser(@RequestBody product Product) {
+        product createdproduct = ProductRepository.save(Product);
+        return new ResponseEntity<>(createdproduct, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<product> getUser(@PathVariable Long id) {
+        product Product = ProductRepository.findById(id).orElse(null);
+        if (Product != null) {
+            return new ResponseEntity<>(Product, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 }
