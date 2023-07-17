@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Deployment
+metadata:
+  name: api-spring
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: api-spring
+  template:
+    metadata:
+      labels:
+        app: api-spring
+    spec:
+      containers:
+      - name: api-spring
+        image: api-spring:latest
+        env:
+        - name: USER_DB
+          value: user_DB
+        - name: PASS_DB
+          value: senha_forte
+        - name: DATABASE_DB
+          value: nome_database
+        ports:
+        - containerPort: 8080
