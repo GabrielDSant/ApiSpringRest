@@ -100,5 +100,5 @@ Bugs na Compilação...
 O jdk que estava na minha maquina era o jdk-11 e o Intellij cria o projeto Spring-boot para versão 17. Foi necessário baixar a versão 17 e mudar dentro do PATH do windows o caminho para o java-17.
 ## Autores
 
-- [@Gabriel Lucas](https://www.linkedin.com/in/sant-seginfo/)
+- [@Gabriel Lucas](www.linkedin.com/in/sant0x27)
 
