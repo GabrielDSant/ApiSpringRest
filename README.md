@@ -13,6 +13,7 @@ Eu estou animado para aprender sobre essas tecnologias e ver como elas podem ser
 - Testar a API usando o POSTMAN.
 - Criar uma imagem do Docker para a API usando o Dockerfile.
 - Implantar a imagem do Docker no cluster Kubernetes usando o comando kubectl.
+- Criar PipeLine usando Github Actions.
 
 ## Variáveis de Ambiente
 
