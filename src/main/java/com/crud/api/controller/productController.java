@@ -43,7 +43,7 @@ public class ProductController {
     public Product updateProduct(@PathVariable Long id, @RequestBody Product updatedProduct) {
         return productRepository.findById(id)
                 .map(product -> {
-                    product.setName(updatedProduct.getName());
+                    product.setNome(updatedProduct.getNome());
                     product.setEmail(updatedProduct.getEmail());
                     return productRepository.save(product);
                 })
